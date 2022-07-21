@@ -1,5 +1,4 @@
 const { Router } = require("express");
-const LogEntry = require("../models/LogEntry.model.js");
 
 const LogEntry = require("../models/LogEntry.model.js");
 

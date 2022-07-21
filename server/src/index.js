@@ -8,13 +8,14 @@ const mongoose = require('mongoose')
 require('dotenv').config();
 
 const middlewares = require("./middlewares")
+const logs = require("./routes/logs.routes.js")
 const app = express();
 
 const DATABASE_CONNECTION = process.env.DATABASE_URL;
 
 mongoose.connect(DATABASE_CONNECTION, {
     UseNewUrlParser: true,
-    newUnifiedTopology: true,
+    // newUnifiedTopology: true,
 });
 
 app.use(morgan('common'));
@@ -30,6 +31,8 @@ app.get('/', (req, res) => {
         message: 'Hello There',
     });
 });
+
+app.use("/api/logs", logs);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
